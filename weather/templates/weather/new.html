@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Погода в моих городах</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+</head>
+
+<body>
+  <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+    <div class="container">
+      <a href="../" class="navbar-brand">Узнать погоду в городе! <span style="color: rgb(39, 117, 161);"> <strong> - Django
+            Framework</strong>
+        </span> </a>
+      <a href="https://openweathermap.org" class="navbar-tech">OpenWeather - Get Your API</a>
+    </div>
+  </div>
+
+  <br /><br /> <br>
+  <div id="jumbotron" class="jumbotron" style="text-align: center; margin-top:-50px">
+    <h1 class="display-5">Weather Desktop App </h1>
+    <h5>Using Python Language and Django Framework</h5>
+
+    <img src="{% static 'images/weather.png' %}" class="image" style="width:100px; margin-bottom:-50px; ">
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <form method="post" class="col-md">
+      {% csrf_token %}
+      <div class=" input-group">
+
+      <input type="text" class="form-control" name="city" placeholder="Выберите город ...">
+      <div class="input-group-btn">
+        <button type="submit" class="btn btn-primary">Введите название города</button>
+      </div>
+      </div>
+      <form>
+  </nav>
+  <br> <br>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                </h1>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                {{ form.name }}
+                            </div>
+                            <div class="control">
+                                <button type="submit" class="button is-info">
+                                    Добавить город
+                                </button>
+                            </div>
+                        </div>
+                        {% if message %}
+                        	<div class="notification {{ message_class }}"> {{ message }} </div>
+                        {% endif %}
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    {% for city_weather in weather_data %}
+                    <div class="box">
+                        <article class="media">
+                            <div class="media-left">
+                                <figure class="image is-50x50">
+                                    <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <span class="title">{{ city_weather.city }}</span>
+                                        <br>
+                                        <span class="subtitle">{{ city_weather.temperature }}° C</span>
+                                        <br> {{ city_weather.description }}
+        <h4><span class="badge badge-primary">Humidity:</span>
+        {{ city_weather.humidity }}</span></h4>
+        <h4><span class="badge badge-primary">Pressure :</span>
+        {{ city_weather.pressure }}</span></h4>
+        <h4><span class="badge badge-primary">Temperature in Celsius :</span> {{city_weather.temperature }} ° C</h4>
+        <h4><span class="badge badge-primary">Description : </span> 
+        {{ city_weather.description }}</span></h4>
+        <h4><span class="badge badge-primary">Feels like : </span>
+        {{ city_weather.feels_like }} ° C</span></h4>
+        <h4><span class="badge badge-primary">Coordinate [X] :</span> 
+        {{ city_weather.coord }} </span></h4>
+        <h4><span class="badge badge-primary">Coordinate [Y] :</span>
+        {{ city_weather.coordy }}</span></h4>
+        <h4><span class="badge badge-primary">Wind: </span>
+        {{ city_weather.wind }} km/h</span></h4>
+        <h4><span class="badge badge-primary">Wind direction: </span>
+        {{ city_weather.direction }} deegres</span></h4>
+        <h4><span class="badge badge-primary">Visibility: </span>
+        {{ city_weather.visibility }} m</span></h4>
+
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="media-right">
+                            	<a href="{% url 'delete_city' city_weather.city %}">
+                            		<button class="delete"></button>
+                            	</a>
+                            </div>	
+                        </article>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+</body>

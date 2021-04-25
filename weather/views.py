@@ -3,10 +3,12 @@ import requests
 from django.shortcuts import render, redirect
 from .models import City
 from .forms import CityForm
+import json
 
 def index(request):
-	url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&APPID=53cc655a14666b4965050fe2d13ccc9d'
-	
+	url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&lang=ru&APPID=53cc655a14666b4965050fe2d13ccc9d'
+	#url = 'http://api.openweathermap.org/data/2.5/forecast?q={}&units=metric&lang=ru&APPID=53cc655a14666b4965050fe2d13ccc9d'
+
 	err_msg = ''#
 	message = ''# создаем переменную сообщения которое увидит пользователь
 	message_class = ''# содержит css класс цвет соообщения
@@ -51,9 +53,22 @@ def index(request):
 		
 		city_weather = {
 			'city' : city.name,
+            'country_code' : r['sys']['country'], 
 			'temperature' : r['main']['temp'],
+			'feels_like' : r['main']['feels_like'],
 			'description' : r['weather'][0]['description'],
+			'humidity' : r['main']['humidity'],
+			'pressure' : r['main']['pressure'],
 			'icon' : r['weather'][0]['icon'],
+			'main': r['weather'][0]['main'],
+			'coord' : r['coord']['lon'],
+			'coordy' : r['coord']['lat'],
+			'wind': r['wind']['speed'],
+			'direction': r['wind']['deg'],
+			'visibility' : r['visibility'],
+			
+
+
 		}	
 		
 		weather_data.append(city_weather)
@@ -66,7 +81,9 @@ def index(request):
 	'message_class' : message_class
 	}
 
+	#return render(request, 'weather/weather.html', context)
 	return render(request, 'weather/weather.html', context)
+
 
 #функция для даления города
 def delete_city(request, city_name):
