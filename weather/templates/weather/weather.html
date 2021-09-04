@@ -12,8 +12,9 @@
 <body>
     <section class="hero is-primary">
         <div class="hero-body">
-            <div class="container">
+            <div style="text-align: center;">
                 <h1 class="title">
+                     Погода в моих городах
                 </h1>
             </div>
         </div>
@@ -58,34 +59,36 @@
                             <div class="media-content">
                                 <div class="content">
                                     <p>
-                                        <span class="title">{{ city_weather.city }}</span>
+                                        <span class="title">город {{ city_weather.city }}</span>
                                         <br>
                                         <span class="subtitle">{{ city_weather.temperature }}° C</span>
                                         <br> {{ city_weather.description }}
+                                        <br>
+                                        <h5><span class="badge badge-primary">Cтрана:</span>
+                                        {{ city_weather.country_code }}</h5>
 
-
-
-                                        <h4><span class="badge badge-primary">Humidity:</span>
-                                        {{ city_weather.humidity }}</span></h4>
-                                        <h4><span class="badge badge-primary">Pressure :</span>
-                                        {{ city_weather.pressure }}</span></h4>
-                                        <h4><span class="badge badge-primary">Temperature in Celsius :</span> {{city_weather.temperature }} ° C</h4>
-                                        <h4><span class="badge badge-primary">Description : </span> 
-                                        {{ city_weather.description }}</span></h4>
-                                        <h4><span class="badge badge-primary">Feels like : </span>
-                                        {{ city_weather.feels_like }} ° C</span></h4>
-                                        <h4><span class="badge badge-primary">Coordinate [X] :</span> 
-                                        {{ city_weather.coord }} </span></h4>
-                                        <h4><span class="badge badge-primary">Coordinate [Y] :</span>
-                                        {{ city_weather.coordy }}</span></h4>
-                                        <h4><span class="badge badge-primary">Wind: </span>
-                                        {{ city_weather.wind }} km/h</span></h4>
-                                        <h4><span class="badge badge-primary">Wind direction: </span>
-                                        {{ city_weather.direction }} deegres</span></h4>
-                                        <h4><span class="badge badge-primary">Visibility: </span>
-                                        {{ city_weather.visibility }} m</span></h4>
-
-
+                                        <h4><span class="badge badge-primary">Влажность:</span>
+                                        {{ city_weather.humidity }} % </h4>
+                                        <h4><span class="badge badge-primary">Давление :</span>
+                                        {{ city_weather.pressure }}</h4>
+                                        <h4><span class="badge badge-primary">Температура в градусах Цельсия :
+                                        </span> {{city_weather.temperature }} ° C</h4>
+                                        <h4><span class="badge badge-primary">Описание : </span>
+                                        {{ city_weather.description }}</h4>
+                                        <h4><span class="badge badge-primary">Ощущается как :
+                                        {{ city_weather.feels_like }} ° C </span></h4>
+                                        <h4><span class="badge badge-primary">Долгота :</span>
+                                        {{ city_weather.coord }}</h4>
+                                        <h4><span class="badge badge-primary">Широта :</span>
+                                        {{ city_weather.coordy }}</h4>
+                                        <h4><span class="badge badge-primary">Скорость ветра: </span>
+                                        {{ city_weather.wind }} км/ч</h4>
+                                        <h4><span class="badge badge-primary">Направление ветра: </span>
+                                        {{ city_weather.direction }} градусов</h4>
+                                        <h4><span class="badge badge-primary">Видимость: </span>
+                                        {{ city_weather.visibility }} м </h4>
+                                        <h4><span class="badge badge-primary">Облачность: </span>
+                                        {{ city_weather.clouds }} </h4>
                                     </p>
                                 </div>
                             </div>
