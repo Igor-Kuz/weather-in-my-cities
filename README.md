@@ -5,8 +5,11 @@ App shows the weather in different cities with info from openweathermap API
 Стек:
 
 Python >= 3.9
+
 Django >= 3
+
 sqlite3
+
 requests
 
 Разработка
