@@ -9,26 +9,22 @@ def index(request):
 	url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&lang=ru&APPID=53cc655a14666b4965050fe2d13ccc9d'
 
 	err_msg = ''
-	message = ''  # создаем переменную сообщения которое увидит пользователь
-	message_class = ''  # содержит css класс цвет соообщения
+	message = ''
+	message_class = ''
 
 	if request.method == 'POST':
 		form = CityForm(request.POST)
 		if form.is_valid():
 			new_city = form.cleaned_data['name']
 			existing_city_count = City.objects.filter(name=new_city).count()
-			# проверяем на то что при ввoде что город существует
 			if existing_city_count == 0:
 				r = requests.get(url.format(new_city)).json()
-				# print(r)# смотрим в ответ API & var 'cod' при отсутствии выдает 404, при наличии 200
 				if r['cod'] == 200: 
 					form.save()
-				else:  # сообщение об ощибке при некорректном ввoде города с проверкой  API
+				else:
 					err_msg = 'Такого города не существует'
 			else:
-				err_msg = f'Город {new_city} уже был введен ранее'  # избежать повторного ввода существующего города
-
-		#  если ошибка существует вывести сообщение об ошибке
+				err_msg = f'Город {new_city} уже был введен ранее'
 		if err_msg:
 			message = err_msg
 			message_class = 'is-danger'
