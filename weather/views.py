@@ -3,7 +3,6 @@ import requests
 from django.shortcuts import render, redirect
 from .models import City
 from .forms import CityForm
-import json
 
 
 def index(request):
@@ -27,17 +26,16 @@ def index(request):
 				else:  # сообщение об ощибке при некорректном ввoде города с проверкой  API
 					err_msg = 'Такого города не существует'
 			else:
-				err_msg = 'Город уже введен ранее'  # избежать повторного ввода существующего города
+				err_msg = f'Город {new_city} уже был введен ранее'  # избежать повторного ввода существующего города
 
-		#  если ошибка существует надо вывести сообщение об ошибке
+		#  если ошибка существует вывести сообщение об ошибке
 		if err_msg:
 			message = err_msg
 			message_class = 'is-danger'
 		else:
-			message = 'Город успешно добавлен'  # иначе сообщение о том что город добавлен
+			message = 'Город успешно добавлен' 
 			message_class = 'is-success'
 
-	#  print(err_msg)
 	form = CityForm()
 	cities = City.objects.all()
 	weather_data = []
@@ -70,11 +68,9 @@ def index(request):
 		'message_class': message_class,
 	}
 
-	# return render(request, 'weather/weather.html', context)
 	return render(request, 'weather/weather.html', context)
 
 
-# функция для даления города
 def delete_city(request, city_name):
 	City.objects.get(name=city_name).delete()
 
