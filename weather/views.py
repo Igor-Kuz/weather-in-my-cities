@@ -33,7 +33,7 @@ def index(request):
 			message = err_msg
 			message_class = 'is-danger'
 		else:
-			message = 'Город успешно добавлен' 
+			message = 'Город успешно добавлен'
 			message_class = 'is-success'
 
 	form = CityForm()
