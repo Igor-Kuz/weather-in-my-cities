@@ -1,5 +1,5 @@
 # weather-in-my-cities
-App shows the weather in different cities with info from openweathermap API
+App shows the weather in different cities according to info from openweathermap API
 
 Инструменты разработки
 Стек:
