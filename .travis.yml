@@ -6,7 +6,7 @@ env:
 before_install:
   - export DJANGO_SETTINGS_MODULE=DS.settings
 install:
-  - pip install -r requirements.txt
+  - pip install -r reqirements.txt
   - pip install coverage
   - pip install coveralls
 script:
