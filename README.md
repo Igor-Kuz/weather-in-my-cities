@@ -1,5 +1,6 @@
 # weather-in-my-cities
 App shows the weather in different cities according to info from openweathermap API
+https://app.travis-ci.com/Igor-Kuz/weather-in-my-cities.svg?branch=master
 
 Инструменты разработки
 Стек:
