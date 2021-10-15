@@ -2,13 +2,9 @@
 ## App which shows the weather in different cities according to info from openweathermap API
 ## Приложение которое отображает метеорологические данные в населённом пункте который задал пользователь, согласно информации полученной от openweathermap API     
 
-[![Build Status](https://app.travis-ci.com/Igor-Kuz/weather-in-my-cities.svg?branch=master)](https://app.travis-ci.com/Igor-Kuz/weather-in-my-cities)
-<<<<<<< HEAD
 
-Инструменты разработки
-Стек:
-=======
->>>>>>> 4631fa4 (made some changes)
+[![Build Status](https://app.travis-ci.com/Igor-Kuz/weather-in-my-cities.svg?branch=master)](https://app.travis-ci.com/Igor-Kuz/weather-in-my-cities)
+
 
 ### Инструменты разработки
  
@@ -42,8 +38,8 @@
 
     pip install -r reqirements.txt
 
-##### 7) Выполнить миграции
+##### 5) Выполнить миграции
 
-##### 8) Запустить сервер
+##### 6) Запустить сервер
 
     python manage.py runserver
