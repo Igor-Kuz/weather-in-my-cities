@@ -7,7 +7,6 @@ venv
 vscode
 .vscode
 *.log
-.env
 .venv
 env/
 venv/
