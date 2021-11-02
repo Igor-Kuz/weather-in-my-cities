@@ -11,9 +11,9 @@ RUN apk add postgresql-dev
 
 RUN pip install --upgrade pip
 
-RUN pip install --upgrade pip
+COPY ./reqirements.txt .
 
-RUN pip install -r requirements.txt
+RUN pip install -r reqirements.txt
 
 COPY . .
 
