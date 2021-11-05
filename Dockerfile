@@ -11,7 +11,12 @@ RUN apk add postgresql-dev
 
 RUN pip install --upgrade pip
 
+
+COPY ./entrypoint.sh .
+
 COPY ./reqirements.txt .
+
+RUN chmod +x entrypoint.sh
 
 RUN pip install -r reqirements.txt
 
